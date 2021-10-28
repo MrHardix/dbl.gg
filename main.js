@@ -88,7 +88,7 @@ client.on("message", message => {
                                 .setFooter(config.footer)
                                 .setColor("BLUE")
                                 .setAuthor(message.author.username, message.author.avatarURL({dynamic: true}))
-                                .setDescription("Websitemiz için **[buraya](https://www.primebotlist.cf)** tıkla!"));
+                                .setDescription("Websitemiz için **[buraya](https://botlistsdd.glitch.me)** tıkla!"));
 	}
   });
 

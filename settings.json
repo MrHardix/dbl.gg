@@ -1,12 +1,12 @@
 {
-  "token": "OTAzMjQ1MjcyMjEyMjAxNDgz.YXqKtg.EXcOjuZn9pjpqXre92p37UD3c4Q",
+  "token": "OTAzMjQ1MjcyMjEyMjAxNDgz.YXqKtg.AJm9vneCUvmzDyaWzSObN8H9ScY",
   "prefix" : "!",
-  "owner" : ["680446084514185319","894585684428456036"],
-  "clientid" : "900378150872186900",
-  "clientsecret" : "HIIPojkQj73apMbAV3NOToTWXGuCnPB4",
-  "clientcallback" : "https://primeupbotlist.glitch.me/callback",
+  "owner" : ["680446084514185319"],
+  "clientid" : "903245272212201483",
+  "clientsecret" : "NqLk1npRrczN40VyfI6IYhKmaWPQA8vm",
+  "clientcallback" : "https://botlistsdd.glitch.me/callback",
   "mongoURL" : "mongodb+srv://primeupbotlist:24272006.@primebotlist.lnntm.mongodb.net/primeupbotlist?retryWrites=true&w=majority",
-  "serverID": "894573492438175774",
+  "serverID": "901166762677125161",
   "footer": "Prime Botlist+ © 2021",
   "tags": ["Moderation", "Fun", "Minecraft","Economy","Guard","NSFW","Anime","Invite","Music","Logging", "Web Dashboard", "Reddit", "Youtube", "Twitch", "Crypto", "Leveling", "Game", "Roleplay", "Utility", "Turkish"]
 }

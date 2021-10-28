@@ -96,9 +96,9 @@ const codesSchema = require("./models/codes.js");
 
 client.on('ready',async () => {
 console.log("`" + client.user.username + "` Başarıyla Aktif Hale getirildi!");
-let joinc = "900384911691747328";
+let joinc = "903253914009346118";
 client.channels.cache.get(joinc).join();
-client.user.setPresence({ activity: { type: 'WATCHING', name: 'By: Prime Studio' }, status: "dnd" });
+client.user.setPresence({ activity: { type: 'WATCHING', name: 'By: Prime Studio' }, status: "online" });
 })
 
 
@@ -118,7 +118,7 @@ map = `No results.`
 }else{
 filter.map(a => {
    
-map += `${a.codeName} **->** [Click Here](https://primeupbotlist.glitch.me/code/${a.code})\n`
+map += `${a.codeName} **->** [Click Here](https://botlistsdd.glitch.me/code/${a.code})\n`
 })
 }
 const aramasonucu = new Discord.MessageEmbed()

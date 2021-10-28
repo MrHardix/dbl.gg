@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {
     let oldDate = Date.now();
     data.findOne({},async (err,docs) => {
 let dataping = Date.now() - oldDate
-    message.channel.send(":ping_pong: Pong...", new Discord.MessageEmbed()
+    message.channel.send("Ping Tablosu:", new Discord.MessageEmbed()
     .setTitle("Prime BotList - Ping")
     .setColor("BLUE").setFooter("Prime BotList © 2021")
     .setAuthor(message.author.tag, message.author.avatarURL({dynamic: true}))

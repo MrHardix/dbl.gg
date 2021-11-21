@@ -110,7 +110,7 @@ const renderTemplate = (res, req, template, data = {}) => {
     next();
   },
   passport.authenticate("discord"));
-  app.get("/callback", passport.authenticate("discord", { failureRedirect: "/error?code=999&message=We encountered an error while connecting." }), async (req, res) => {
+  app.get("/callback", passport.authenticate("discord", { failureRedirect: "/error?code=999&message=Bağlanırken bir hatayla karşılaştık." }), async (req, res) => {
       let banTespit = await banSchema.findOne({user: req.user.id})
       if(banTespit) {
       client.users.fetch(req.user.id).then(async a => {
@@ -123,7 +123,7 @@ const renderTemplate = (res, req, template, data = {}) => {
       } else {
       res.redirect(req.session.backURL || '/')
       client.users.fetch(req.user.id).then(async a => {
-      client.channels.cache.get(channels.login).send(new Discord.MessageEmbed().setAuthor(a.username, a.avatarURL({dynamic: true})).setThumbnail(a.avatarURL({dynamic: true})).setColor("GREEN").setDescription(`[**${a.username}**#${a.discriminator}](https://vcodes.xyz/user/${a.id}) isimli kullanıcı **siteye** giriş yaptı.`).addField("Username", a.username).addField("User ID", a.id).addField("User Discriminator", a.discriminator))
+      client.channels.cache.get(channels.login).send(new Discord.MessageEmbed().setAuthor(a.username, a.avatarURL({dynamic: true})).setThumbnail(a.avatarURL({dynamic: true})).setColor("GREEN").setDescription(`[**${a.username}**#${a.discriminator}](https://otlistsdd.glitch.me/user/${a.id}) isimli kullanıcı **siteye** giriş yaptı.`).addField("Username", a.username).addField("User ID", a.id).addField("User Discriminator", a.discriminator))
       
       })
       }

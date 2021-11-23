@@ -560,7 +560,7 @@ app.get("/error", (req, res) => {
        }, function (err,docs) {})
         client.users.fetch(botdata.botID).then(bot => {
             return res.redirect(`/admin/premium?success=true&message=You gived the premium of the bot named ${bot.tag}`)
-            client.users.cache.get(botdata.ownerID).send(`**${bota.tag}** adlı bot'a premium verildi!`)
+            client.users.cache.get(botdata.ownerID).send(`<:star2:912788623978528798> **${bota.tag}** adlı bot'a premium verildi!`)
         });
         return res.redirect(`/admin/premium?success=true&message=Premium gived.`)
      });
@@ -572,7 +572,7 @@ app.get("/error", (req, res) => {
         }
        }, function (err,docs) {})
         client.users.fetch(botdata.botID).then(bot => {
-        client.users.cache.get(botdata.ownerID).send(`The premium of your bot named **${bota.tag}** has been deleted.\nnAuthorized: **${req.user.username}**`)
+        client.users.cache.get(botdata.ownerID).send(`<:block:912788623248748606> **${bota.tag}** adlı botun premium'u alındı.\nnAuthorized: **${req.user.username}**`)
         });
         return res.redirect(`/admin/premium?success=true&message=Premium deleted.`)
      });
@@ -590,7 +590,7 @@ app.get("/error", (req, res) => {
        let botdata = await botsdata.findOne({ botID: req.params.botID });
 
         client.users.fetch(botdata.botID).then(bot => {
-            client.channels.cache.get(channels.certifitacelog).send(`<@${botdata.ownerID}>'s bot named **${bot.tag}** has been granted a certificate.`)
+            client.channels.cache.get(channels.certifitacelog).send(`<:sss:912788623718490132> <@${botdata.ownerID}> isimli kullancının, **${bot.tag}** isimli botuna sertifika verildi.`)
             client.users.cache.get(botdata.ownerID).send(`Your bot named **${bota.tag}** has been certified.`)
         });
         await appsdata.deleteOne({ botID: req.params.botID })
@@ -609,7 +609,7 @@ app.get("/error", (req, res) => {
        }, function (err,docs) {})
        let botdata = await botsdata.findOne({ botID: req.params.botID });
         client.users.fetch(botdata.botID).then(bot => {
-            client.channels.cache.get(channels.certifitacelog).send(`<@${botdata.ownerID}>'s bot named **${bot.tag}** has not been granted a certificate.`)
+            client.channels.cache.get(channels.certifitacelog).send(`<:red:903257732356915200> <@${botdata.ownerID}> adlı kullanıcının,**${bot.tag}** isimli bot için istediği sertifika reddedildi.`)
             client.users.cache.get(botdata.ownerID).send(`Your bot named **${bot.tag}** certificate application has been declined.\nReason: **${rBody['reason']}**`)
         });
         return res.redirect(`/admin/certificate-apps?success=true&message=Certificate deleted.`)
@@ -641,7 +641,7 @@ app.get("/error", (req, res) => {
         }
         client.channels.cache.get(channels.codelog).send(new Discord.MessageEmbed()
         .setTitle("New code added!").setColor("GREEN").setFooter(config.footer)
-        .setDescription(`The user named **[${req.user.username}](https://vcodes.xyz/user/${req.user.id})** added the code named **${rBody['codename']}** to the system.`)
+        .setDescription(`The user named **[${req.user.username}](https://botlistsdd.glitch.me/user/${req.user.id})** added the code named **${rBody['codename']}** to the system.`)
         .addField("Code Link", `https://vcodes.xyz/code/${kod}`, true)
         .addField("Code Description", rBody['codedesc'], true)
         .addField("Code Category", rBody['category'], true)
@@ -668,8 +668,8 @@ app.get("/error", (req, res) => {
          }}, function (err,docs) {})
         client.channels.cache.get(channels.codelog).send(new Discord.MessageEmbed()
         .setTitle("Code edited!").setColor("GREEN").setFooter(config.footer)
-        .setDescription(`The user named **[${req.user.username}](https://vcodes.xyz/user/${req.user.id})** edited the code named **${rBody['codename']}**.`)
-        .addField("Code Link", `https://vcodes.xyz/code/${kod}`, true)
+        .setDescription(`The user named **[${req.user.username}](https://botlistsdd.glitch.me/user/${req.user.id})** edited the code named **${rBody['codename']}**.`)
+        .addField("Code Link", `https://botlistsdd.glitch.me/code/${kod}`, true)
         .addField("Code Description", rBody['codedesc'], true)
         .addField("Code Category", rBody['category'], true)
         )

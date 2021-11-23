@@ -341,7 +341,7 @@ app.get("/error", (req, res) => {
     if(x) return res.redirect("/error?code=400&message=You can vote every 12 hours.");
     await votes.findOneAndUpdate({bot: req.params.botID, user: req.user.id }, {$set: {Date: Date.now(), ms: 43200000 }}, {upsert: true})
     await botsdata.findOneAndUpdate({botID: req.params.botID}, {$inc: {votes: 1}})
-    client.channels.cache.get(channels.votes).send(`**${req.user.username}** voted **${botdata.username}** **\`(${botdata.votes + 1} votes)\`**`)
+    client.channels.cache.get(channels.votes).send(`**${req.user.username}** Oyverdi **${botdata.username}** **\`(${botdata.votes + 1} Oy)\`**`)
     return res.redirect(`/bot/${req.params.botID}/vote?success=true&message=You voted successfully. You can vote again after 12 hours.`);
     renderTemplate(res, req, "botlist/vote.ejs", {req, roles, config, botdata});
   })

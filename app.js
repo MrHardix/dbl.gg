@@ -89,7 +89,7 @@ const renderTemplate = (res, req, template, data = {}) => {
                 res.redirect('/error?code=200&message=Sitemiz geçici olarak kullanılamıyor / Our website is temporarily unavailable') 
             }
         } else {
-            res.redirect('/error?code=200&message=Our website is temporarily unavailable.') 
+            res.redirect('/error?code=200&message=Sitemiz geçici olarak kullanılamıyor / Our website is temporarily unavailable') 
         }
     } else {
         next();
@@ -114,7 +114,7 @@ const renderTemplate = (res, req, template, data = {}) => {
       let banTespit = await banSchema.findOne({user: req.user.id})
       if(banTespit) {
       client.users.fetch(req.user.id).then(async a => {
-      client.channels.cache.get(channels.login).send(new Discord.MessageEmbed().setAuthor(a.username, a.avatarURL({dynamic: true})).setThumbnail(a.avatarURL({dynamic: true})).setColor("RED").setDescription(`[**${a.username}**#${a.discriminator}](https://vcodes.xyz/user/${a.id}) isimli kullanıcı **siteye** giriş yapmaya çalıştı fakat siteden engellendiği için giriş yapamadı.`).addField("Username", a.username).addField("User ID", a.id).addField("User Discriminator", a.discriminator))
+      client.channels.cache.get(channels.login).send(new Discord.MessageEmbed().setAuthor(a.username, a.avatarURL({dynamic: true})).setThumbnail(a.avatarURL({dynamic: true})).setColor("RED").setDescription(`[**${a.username}**#${a.discriminator}](https://botlistsdd.glitch.me/user/${a.id}) isimli kullanıcı **siteye** giriş yapmaya çalıştı fakat siteden engellendiği için giriş yapamadı.`).addField("Username", a.username).addField("User ID", a.id).addField("User Discriminator", a.discriminator))
       })
       req.session.destroy(() => {
       req.logout();
@@ -123,7 +123,7 @@ const renderTemplate = (res, req, template, data = {}) => {
       } else {
       res.redirect(req.session.backURL || '/')
       client.users.fetch(req.user.id).then(async a => {
-      client.channels.cache.get(channels.login).send(new Discord.MessageEmbed().setAuthor(a.username, a.avatarURL({dynamic: true})).setThumbnail(a.avatarURL({dynamic: true})).setColor("GREEN").setDescription(`[**${a.username}**#${a.discriminator}](https://otlistsdd.glitch.me/user/${a.id}) isimli kullanıcı **siteye** giriş yaptı.`).addField("Username", a.username).addField("User ID", a.id).addField("User Discriminator", a.discriminator))
+      client.channels.cache.get(channels.login).send(new Discord.MessageEmbed().setAuthor(a.username, a.avatarURL({dynamic: true})).setThumbnail(a.avatarURL({dynamic: true})).setColor("GREEN").setDescription(`[**${a.username}**#${a.discriminator}](https://botlistsdd.glitch.me/user/${a.id}) isimli kullanıcı **siteye** giriş yaptı.`).addField("Username", a.username).addField("User ID", a.id).addField("User Discriminator", a.discriminator))
       
       })
       }
@@ -166,35 +166,35 @@ app.get("/error", (req, res) => {
   //------------------- CODE SHARE  -------------------//
   app.get("/code/:code", checkMaintence, checkAuth, async (req,res) => {
     let kod = req.params.code;
-    if(!client.guilds.cache.get(settingsc.serverID).members.cache.get(req.user.id)) return res.redirect("/error?code=403&message=To do this, you have to join our discord server.");
+    if(!client.guilds.cache.get(settingsc.serverID).members.cache.get(req.user.id)) return res.redirect("/error?code=403&message=Bunun için discord sunucumuza üye olmanız gerekmektedir.");
     codesSchema.findOne({code:kod}, function (err,docs) {
     if(!docs) {
-      res.redirect("/error?code=403&message=You is not competent to do this.");
+      res.redirect("/error?code=403&message=Bunu yapmaya yetkin değilsin.");
     } else {
 
     if(docs.codeCategory == "javascript") {
-    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.javascript)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.javascript)) return res.redirect("/error?code=403&message=Bunun için sunucumuzdan 'javascript' Rolü almalısın.");
     }
     if(docs.codeCategory == "html") {
-    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.html)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.html)) return res.redirect("/error?code=403&message=Bunun için sunucumuzdan 'html' Rolü almalısın.");
     }
     if(docs.codeCategory == "subs") {
-    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.altyapilar)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.altyapilar)) return res.redirect("/error?code=403&message=Bunun için sunucumuzdan 'subs' Rolü almalısın.");
     }
     if(docs.codeCategory == "5invites") {
-    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.besdavet)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.besdavet)) return res.redirect("/error?code=403&message=Bunun için sunucumuza 5 invite yapmalısın.");
     }
     if(docs.codeCategory == "10invites") {
-    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.ondavet)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.ondavet)) return res.redirect("/error?code=403&message=Bunun için sunucumuza 10 invite yapmalısın.");
     }
     if(docs.codeCategory == "15invites") {
-    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.onbesdavet)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.onbesdavet)) return res.redirect("/error?code=403&message=Bunun için sunucumuza 15 invite yapmalısın.");
     }
     if(docs.codeCategory == "20invites") {
-    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.yirmidavet)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.yirmidavet)) return res.redirect("/error?code=403&message=Bunun için sunucumuza 20 invite yapmalısın.");
     }
     if(docs.codeCategory == "bdfd") {
-    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.bdfd)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.bdfd)) return res.redirect("/error?code=403&message=Bunun için sunucumuzdan 'subs' Rolü almalısın.");
     }
     renderTemplate(res, req, "codeshare/codeview.ejs", {req, roles, config, docs});
     }
@@ -209,7 +209,7 @@ app.get("/error", (req, res) => {
        client.channels.cache.get(channels.request).send(new Discord.MessageEmbed()
                             .setTitle("Code Request").setColor("GREEN").setAuthor(a.username, a.avatarURL({dynamic: true}))
                             .setThumbnail(client.user.avatarURL({dynamic: true}))
-                            .setDescription(`User **[${a.username}#${a.discriminator}](https://vcodes.xyz/user/${a.id})** requested the code named **${rBody['kodadi']}**.`)
+                            .setDescription(`User **[${a.username}#${a.discriminator}](https://botlistsdd.glitch.me/user/${a.id})** , **${rBody['kodadi']}** Adlı kodu istedi.`)
                             .addField("Code Description", rBody['aciklama'], true)
                             .addField("Code Category", rBody['kategori'], true)
                             .setFooter(config.footer))

@@ -475,7 +475,7 @@ app.get("/error", (req, res) => {
         new appsdata({botID: rBody['bot'], hundred: rBody['onehundred'], future: rBody['future']}).save();
         res.redirect("/bots?success=true&message=Certificate application applied.")
         let botdata = await botsdata.findOne({ botID: rBody['bot'] })
-        client.channels.cache.get(channels.botlog).send(`User **${botdata.ownerName}** requested a certificate for her bot named **${botdata.username}**.`)
+        client.channels.cache.get(channels.botlog).send(`<:dogrulanmis:903257491197030400> **${botdata.ownerName}** adlı kullanıcı, **${botdata.username}** adlı botu için bir sertifika istedi.`)
     });
     //
     const checkAdmin = async (req, res, next) => {

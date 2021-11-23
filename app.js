@@ -517,7 +517,7 @@ app.get("/error", (req, res) => {
         }
        }, function (err,docs) {})
        client.users.fetch(req.params.botID).then(bota => {
-            client.channels.cache.get(channels.botlog).send(`<@${botdata.ownerID}>'s bot named **${bota.tag}** has been approved. `)
+            client.channels.cache.get(channels.botlog).send(`<:onay:903257510268518420> <@${botdata.ownerID}> adlı kullanıcının, **${bota.tag}** isimli botu onaylandı. `)
             client.users.cache.get(botdata.ownerID).send(`Your bot named **${bota.tag}** has been approved.`)
        });
        return res.redirect(`/admin/unapproved?success=true&message=Bot approved.`)
@@ -539,7 +539,7 @@ app.get("/error", (req, res) => {
         let rBody = req.body;
         await botsdata.deleteOne({ botID: req.params.botID, ownerID: botdata.ownerID })
          client.users.fetch(botdata.ownerID).then(sahip => {
-             client.channels.cache.get(channels.botlog).send(`<@${botdata.ownerID}>'s bot named **${bota.tag}** has been declined. `)
+             client.channels.cache.get(channels.botlog).send(`<:red:903257732356915200> <@${botdata.ownerID}> adlı kullanıcının, **${bota.tag}** isimli botu reddedildi. Sebep: ${rBody['reason']}`)
              client.users.cache.get(botdata.ownerID).send(`Your bot named **${bota.tag}** has been declined.\nReason: **${rBody['reason']}**\nAuthorized: **${req.user.username}**`)
              return res.redirect(`/admin/unapproved?success=true&message=You have declined to a bot named ${bot.tag}`)
         })
@@ -560,7 +560,7 @@ app.get("/error", (req, res) => {
        }, function (err,docs) {})
         client.users.fetch(botdata.botID).then(bot => {
             return res.redirect(`/admin/premium?success=true&message=You gived the premium of the bot named ${bot.tag}`)
-            client.users.cache.get(botdata.ownerID).send(`The premium of your bot named **${bota.tag}** has been gived.`)
+            client.users.cache.get(botdata.ownerID).send(`**${bota.tag}** adlı bot'a premium verildi!`)
         });
         return res.redirect(`/admin/premium?success=true&message=Premium gived.`)
      });

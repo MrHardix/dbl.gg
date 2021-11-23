@@ -209,7 +209,7 @@ app.get("/error", (req, res) => {
        client.channels.cache.get(channels.request).send(new Discord.MessageEmbed()
                             .setTitle("Code Request").setColor("GREEN").setAuthor(a.username, a.avatarURL({dynamic: true}))
                             .setThumbnail(client.user.avatarURL({dynamic: true}))
-                            .setDescription(`User **[${a.username}#${a.discriminator}](https://vcodes.xyz/user/${a.id})** requested the code named **${rBody['kodadi']}**.`)
+                            .setDescription(`User **[${a.username}#${a.discriminator}](https://botlistsdd.glitch.me/user/${a.id})** requested the code named **${rBody['kodadi']}**.`)
                             .addField("Code Description", rBody['aciklama'], true)
                             .addField("Code Category", rBody['kategori'], true)
                             .setFooter(config.footer))

@@ -246,19 +246,19 @@ app.get("/error", (req, res) => {
   app.post("/uptime/add", checkMaintence, checkAuth, async (req,res) => {
     const rBody = req.body;
     if(!rBody['link']) { 
-        res.redirect('?error=true&message=Write a any link.')
+        res.redirect('?error=true&message=Herhangi bir bağlantı yazın/Write a any link.')
     } else {
-        if(!rBody['link'].match('https')) return res.redirect('?error=true&message=You must enter a valid link.')
+        if(!rBody['link'].match('https')) return res.redirect('?error=true&message=Geçerli bir bağlantı girmelisiniz/You must enter a valid link.')
         const updcode = makeidd(5);
         const dde = await uptimedata.findOne({link: rBody['link']});
         const dd = await uptimedata.find({userID: req.user.id});
-        if(dd.length > 9) res.redirect('?error=true&message=Your uptime limit has reached.')
+        if(dd.length > 9) res.redirect('?error=true&message=Çalışma süresi sınırınız ulaştı/Your uptime limit has reached.')
 
-        if(dde) return res.redirect('?error=true&message=This link already exists in the system.')
+        if(dde) return res.redirect('?error=true&message=Bu bağlantı sistemde zaten var/This link already exists in the system.')
         client.users.fetch(req.user.id).then(a => {
         client.channels.cache.get(channels.uptimelog).send(new Discord.MessageEmbed()
         .setAuthor(a.username, a.avatarURL({dynamic: true}))
-        .setDescription("New link added uptime system.")
+        .setDescription("Uptime sistemine yeni bir bağlantı eklendi!")
         .setThumbnail(client.user.avatarURL)
         .setColor("GREEN")
         .addField("User;", `${a.tag} \`(${a.id})\``, true)
@@ -267,7 +267,7 @@ app.get("/error", (req, res) => {
         )
         new uptimedata({server: config.serverID, userName: a.username, userID: req.user.id, link: rBody['link'], code: updcode}).save();
       })
-      res.redirect('?success=true&message=Your link has been successfully added to the uptime system.');
+      res.redirect('?success=true&message=Bağlantınız çalışma süresi sistemine başarıyla eklendi/Your link has been successfully added to the uptime system.');
     }
   })
   app.get("/uptime/links", checkMaintence, checkAuth, async (req,res) => {
@@ -276,9 +276,9 @@ app.get("/error", (req, res) => {
    })
    app.get("/uptime/:code/delete", checkMaintence, checkAuth, async (req,res) => {
     const dde = await uptimedata.findOne({code: req.params.code});
-    if(!dde) return res.redirect('/uptime/links?error=true&message=There is no such site in the system.')
+    if(!dde) return res.redirect('/uptime/links?error=true&message=Sistemde böyle bir site yok/There is no such site in the system.')
     uptimedata.findOne({ 'code': req.params.code }, async function (err, docs) { 
-            if(docs.userID != req.user.id) return res.redirect('/uptime/links?error=true&message=The link you tried to delete does not belong to you.');
+            if(docs.userID != req.user.id) return res.redirect('/uptime/links?error=true&message=Silmeye çalıştığınız bağlantı size ait değil/The link you tried to delete does not belong to you.');
             res.redirect('/uptime/links?success=true&message=The link has been successfully deleted from the system.');
             await uptimedata.deleteOne({ code: req.params.code });
      })

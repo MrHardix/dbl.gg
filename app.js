@@ -83,13 +83,13 @@ const renderTemplate = (res, req, template, data = {}) => {
                 if(client.guilds.cache.get(settingsc.serverID).members.cache.get(req.user.id).roles.cache.get(roles.yonetici)) {
                 next();
                 } else {
-                    res.redirect('/error?code=200&message=Our website is temporarily unavailable.') 
+                    res.redirect('/error?code=200&message=Sitemiz geçici olarak kullanılamıyor.') 
                 }
             } else {
-                res.redirect('/error?code=200&message=Our website is temporarily unavailable.') 
+                res.redirect('/error?code=200&message=Sitemiz geçici olarak kullanılamıyor.') 
             }
         } else {
-            res.redirect('/error?code=200&message=Our website is temporarily unavailable.') 
+            res.redirect('/error?code=200&message=Sitemiz geçici olarak kullanılamıyor.') 
         }
     } else {
         next();

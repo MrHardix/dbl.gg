@@ -96,9 +96,9 @@ const codesSchema = require("./models/codes.js");
 
 client.on('ready',async () => {
 console.log("`" + client.user.username + "` Başarıyla Aktif Hale getirildi!");
-let joinc = "903253914009346118";
+let joinc = "916390044061802536";
 client.channels.cache.get(joinc).join();
-client.user.setPresence({ activity: { type: 'WATCHING', name: 'By: Prime Studio' }, status: "online" });
+client.user.setPresence({ activity: { type: 'WATCHING', name: 'By: Ringo #BotList' }, status: "online" });
 })
 
 

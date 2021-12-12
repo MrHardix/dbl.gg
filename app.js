@@ -118,7 +118,7 @@ const renderTemplate = (res, req, template, data = {}) => {
       })
       req.session.destroy(() => {
       req.logout();
-      res.redirect('/error?code=401&message=You look like you have been blocked from our site.')
+      res.redirect('/error?code=401&message=Sitemizden engellenmiş gibi görünüyorsunuz.')
       });
       } else {
       res.redirect(req.session.backURL || '/')
@@ -142,7 +142,7 @@ const renderTemplate = (res, req, template, data = {}) => {
     renderTemplate(res, req, "index.ejs", {config, roles, botdata, getuser});
   });
   app.get("/dc", (req, res) => {
-    res.redirect('https://discord.gg/8vP9FCj3sh');
+    res.redirect('https://discord.gg/ringo');
   });  
 app.get("/error", (req, res) => {
         renderTemplate(res, req, "pages/error.ejs", {req});
@@ -166,35 +166,35 @@ app.get("/error", (req, res) => {
   //------------------- CODE SHARE  -------------------//
   app.get("/code/:code", checkMaintence, checkAuth, async (req,res) => {
     let kod = req.params.code;
-    if(!client.guilds.cache.get(settingsc.serverID).members.cache.get(req.user.id)) return res.redirect("/error?code=403&message=To do this, you have to join our discord server.");
+    if(!client.guilds.cache.get(settingsc.serverID).members.cache.get(req.user.id)) return res.redirect("/error?code=403&message=Bunun için discord sunucumuza üye olmanız gerekmektedir.");
     codesSchema.findOne({code:kod}, function (err,docs) {
     if(!docs) {
-      res.redirect("/error?code=403&message=You is not competent to do this.");
+      res.redirect("/error?code=403&message=Bunu yapmaya yetkin değilsin.");
     } else {
 
     if(docs.codeCategory == "javascript") {
-    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.javascript)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.javascript)) return res.redirect("/error?code=403&message=Bunu yapmaya yetkin değilsin.");
     }
     if(docs.codeCategory == "html") {
-    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.html)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.html)) return res.redirect("/error?code=403&message=Bunu yapmaya yetkin değilsin.");
     }
     if(docs.codeCategory == "subs") {
-    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.altyapilar)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.altyapilar)) return res.redirect("/error?code=403&message=Bunu yapmaya yetkin değilsin.");
     }
     if(docs.codeCategory == "5invites") {
-    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.besdavet)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.besdavet)) return res.redirect("/error?code=403&message=Bunu yapmaya yetkin değilsin.");
     }
     if(docs.codeCategory == "10invites") {
-    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.ondavet)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.ondavet)) return res.redirect("/error?code=403&message=Bunu yapmaya yetkin değilsin.");
     }
     if(docs.codeCategory == "15invites") {
-    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.onbesdavet)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.onbesdavet)) return res.redirect("/error?code=403&message=Bunu yapmaya yetkin değilsin.");
     }
     if(docs.codeCategory == "20invites") {
-    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.yirmidavet)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.yirmidavet)) return res.redirect("/error?code=403&message=Bunu yapmaya yetkin değilsin.");
     }
     if(docs.codeCategory == "bdfd") {
-    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.bdfd)) return res.redirect("/error?code=403&message=You is not competent to do this.");
+    if(!client.guilds.cache.get(config.serverID).members.cache.get(req.user.id).roles.cache.get(roles.bdfd)) return res.redirect("/error?code=403&message=Bunu yapmaya yetkin değilsin.");
     }
     renderTemplate(res, req, "codeshare/codeview.ejs", {req, roles, config, docs});
     }
@@ -207,11 +207,11 @@ app.get("/error", (req, res) => {
      client.users.fetch(req.user.id).then(a => {
        let rBody = req.body;
        client.channels.cache.get(channels.request).send(new Discord.MessageEmbed()
-                            .setTitle("Code Request").setColor("GREEN").setAuthor(a.username, a.avatarURL({dynamic: true}))
+                            .setTitle("Kod İsteği").setColor("GREEN").setAuthor(a.username, a.avatarURL({dynamic: true}))
                             .setThumbnail(client.user.avatarURL({dynamic: true}))
-                            .setDescription(`User **[${a.username}#${a.discriminator}](https://botlistsdd.glitch.me/user/${a.id})** requested the code named **${rBody['kodadi']}**.`)
-                            .addField("Code Description", rBody['aciklama'], true)
-                            .addField("Code Category", rBody['kategori'], true)
+                            .setDescription(`Kullanıcı **[${a.username}#${a.discriminator}](https://botlistsdd.glitch.me/user/${a.id})**, **${rBody['kodadi']}** adlı kodu istedi.`)
+                            .addField("Kod Açıklama", rBody['aciklama'], true)
+                            .addField("Kod Kategorisi", rBody['kategori'], true)
                             .setFooter(config.footer))
     })
     return res.redirect("/user/"+req.user.id)
@@ -246,19 +246,19 @@ app.get("/error", (req, res) => {
   app.post("/uptime/add", checkMaintence, checkAuth, async (req,res) => {
     const rBody = req.body;
     if(!rBody['link']) { 
-        res.redirect('?error=true&message=Write a any link.')
+        res.redirect('?error=true&message=Herhangi bir bağlantı yazın.')
     } else {
-        if(!rBody['link'].match('https')) return res.redirect('?error=true&message=You must enter a valid link.')
+        if(!rBody['link'].match('https')) return res.redirect('?error=true&message=Geçerli bir bağlantı girmelisiniz.')
         const updcode = makeidd(5);
         const dde = await uptimedata.findOne({link: rBody['link']});
         const dd = await uptimedata.find({userID: req.user.id});
-        if(dd.length > 9) res.redirect('?error=true&message=Your uptime limit has reached.')
+        if(dd.length > 9) res.redirect('?error=true&message=Uptime sınırına ulaştınız.')
 
-        if(dde) return res.redirect('?error=true&message=This link already exists in the system.')
+        if(dde) return res.redirect('?error=true&message=Bu bağlantı sistemde zaten var.')
         client.users.fetch(req.user.id).then(a => {
         client.channels.cache.get(channels.uptimelog).send(new Discord.MessageEmbed()
         .setAuthor(a.username, a.avatarURL({dynamic: true}))
-        .setDescription("New link added uptime system.")
+        .setDescription("Yeni bağlantı eklendi Uptime sistemi.")
         .setThumbnail(client.user.avatarURL)
         .setColor("GREEN")
         .addField("User;", `${a.tag} \`(${a.id})\``, true)
@@ -267,7 +267,7 @@ app.get("/error", (req, res) => {
         )
         new uptimedata({server: config.serverID, userName: a.username, userID: req.user.id, link: rBody['link'], code: updcode}).save();
       })
-      res.redirect('?success=true&message=Your link has been successfully added to the uptime system.');
+      res.redirect('?success=true&message=Bağlantınız Uptime sistemine başarıyla eklendi.');
     }
   })
   app.get("/uptime/links", checkMaintence, checkAuth, async (req,res) => {
@@ -276,10 +276,10 @@ app.get("/error", (req, res) => {
    })
    app.get("/uptime/:code/delete", checkMaintence, checkAuth, async (req,res) => {
     const dde = await uptimedata.findOne({code: req.params.code});
-    if(!dde) return res.redirect('/uptime/links?error=true&message=There is no such site in the system.')
+    if(!dde) return res.redirect('/uptime/links?error=true&message=Sistemde böyle bir site yok.')
     uptimedata.findOne({ 'code': req.params.code }, async function (err, docs) { 
-            if(docs.userID != req.user.id) return res.redirect('/uptime/links?error=true&message=The link you tried to delete does not belong to you.');
-            res.redirect('/uptime/links?success=true&message=The link has been successfully deleted from the system.');
+            if(docs.userID != req.user.id) return res.redirect('/uptime/links?error=true&message=Silmeye çalıştığınız bağlantı size ait değil.');
+            res.redirect('/uptime/links?success=true&message=Bağlantı sistemden başarıyla silindi.');
             await uptimedata.deleteOne({ code: req.params.code });
      })
    })
@@ -322,14 +322,14 @@ app.get("/error", (req, res) => {
         });
       })
   app.get("/addbot", checkMaintence, checkAuth, async (req,res) => {
-    if(!client.guilds.cache.get(settingsc.serverID).members.cache.get(req.user.id)) return res.redirect("/error?code=403&message=To do this, you have to join our discord server.");
+    if(!client.guilds.cache.get(settingsc.serverID).members.cache.get(req.user.id)) return res.redirect("/error?code=403&message=Bunun için discord sunucumuza üye olmanız gerekmektedir.");
     renderTemplate(res, req, "botlist/addbot.ejs", {req, roles, config});
   })
   app.get("/bot/:botID/vote", checkMaintence, checkAuth, async (req,res) => {
     let botdata = await botsdata.findOne({ botID: req.params.botID });
-    if(!botdata) return res.redirect("/error?code=404&message=You entered an invalid bot id.");
+    if(!botdata) return res.redirect("/error?code=404&message=Geçersiz bir bot kimliği girdiniz.");
     if(!req.user.id === botdata.ownerID || req.user.id.includes(botdata.coowners)) {
-      if(botdata.status != "Approved") return res.redirect("/error?code=404&message=You entered an invalid bot id.");
+      if(botdata.status != "Approved") return res.redirect("/error?code=404&message=Geçersiz bir bot kimliği girdiniz.");
     }
     
     renderTemplate(res, req, "botlist/vote.ejs", {req, roles, config, botdata});
@@ -338,11 +338,11 @@ app.get("/error", (req, res) => {
     const votes = require("./models/botlist/vote.js");
     let botdata = await botsdata.findOne({ botID: req.params.botID });
     let x = await votes.findOne({user: req.user.id,bot: req.params.botID})
-    if(x) return res.redirect("/error?code=400&message=You can vote every 12 hours.");
+    if(x) return res.redirect("/error?code=400&message=Her 12 saatte bir oy verebilirsiniz.");
     await votes.findOneAndUpdate({bot: req.params.botID, user: req.user.id }, {$set: {Date: Date.now(), ms: 43200000 }}, {upsert: true})
     await botsdata.findOneAndUpdate({botID: req.params.botID}, {$inc: {votes: 1}})
     client.channels.cache.get(channels.votes).send(`**${req.user.username}** Oyverdi **${botdata.username}** **\`(${botdata.votes + 1} Oy)\`**`)
-    return res.redirect(`/bot/${req.params.botID}/vote?success=true&message=You voted successfully. You can vote again after 12 hours.`);
+    return res.redirect(`/bot/${req.params.botID}/vote?success=true&message=Başarılı bir şekilde oy verdiniz. 12 saat sonra tekrar oy verebilirsiniz.`);
     renderTemplate(res, req, "botlist/vote.ejs", {req, roles, config, botdata});
   })
 
@@ -350,8 +350,8 @@ app.get("/error", (req, res) => {
     rBody = req.body;
     let botvarmi = await botsdata.findOne({botID: rBody['botID']});
     client.users.fetch(req.body.botID).then(async a => {
-    if(!a.bot) return res.redirect("/error?code=404&message=You entered an invalid bot id.");
-    if(!a) return res.redirect("/error?code=404&message=You entered an invalid bot id.");
+    if(!a.bot) return res.redirect("/error?code=404&message=Geçersiz bir bot kimliği girdiniz.");
+    if(!a) return res.redirect("/error?code=404&message=Geçersiz bir bot kimliği girdiniz.");
     if(rBody['coowners']) {
         if(String(rBody['coowners']).split(',').length > 3) return res.redirect("?error=true&message=You can add up to 3 CO-Owners..")
         if(String(rBody['coowners']).split(',').includes(req.user.id)) return res.redirect("?error=true&message=You cannot add yourself to other CO-Owners.");

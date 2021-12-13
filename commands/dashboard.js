@@ -58,7 +58,7 @@ if(args[1] == "aç") {
     .addField("Yetkili", message.author)
     .addField("Sebep", reason)
     .setColor("BLUE")
-    client.channels.cache.get(ch.webstatus).send(`Prime BotList has been switched to __maintance__ due to **${reason}**`).then(a => { 
+    client.channels.cache.get(ch.webstatus).send(`Ringo BotList,  **${reason}** Sebebiyle __Bakıma__ Alındı!`).then(a => { 
         new databakim({server: message.guild.id, reason: reason, bakimmsg: a.id}).save();
     })
 }
@@ -77,7 +77,7 @@ if(args[1] == "kapat") {
     .setAuthor("Prime BotList", client.user.avatarURL())
     .setThumbnail(client.user.avatarURL())
     .setColor("GREEN")
-    .setDescription(`Prime BotList are **active** again!\n[Click to redirect website](https://botlistsdd.glitch.me)`)
+    .setDescription(`Ringo BotList are **active** again!\n[Click to redirect website](https://botlistsdd.glitch.me)`)
     .setFooter("Prime BotList © 2021");
     client.channels.cache.get(ch.webstatus).send(".").then(b => { b.delete({ timeout: 500 })})
     databakim.deleteOne({server: message.guild.id}, function (error, server) { 

@@ -58,7 +58,7 @@ if(args[1] == "aç") {
     .addField("Yetkili", message.author)
     .addField("Sebep", reason)
     .setColor("BLUE")
-    client.channels.cache.get(ch.webstatus).send(`Ringo BotList,  **${reason}** Sebebiyle __Bakıma__ Alındı!`).then(a => { 
+    client.channels.cache.get(ch.webstatus).send(`||@everyone|| Ringo BotList,  **${reason}** Sebebiyle __Bakıma__ Alındı!`).then(a => { 
         new databakim({server: message.guild.id, reason: reason, bakimmsg: a.id}).save();
     })
 }
@@ -66,19 +66,19 @@ if(args[1] == "kapat") {
     const d = await databakim.findOne({server: message.guild.id});
     if(!d) return message.reply("site zaten bakıma alınmamış.")
     const tebriklerkanks = new Discord.MessageEmbed()
-    .setAuthor("Prime BotList", client.user.avatarURL())
+    .setAuthor("Ringo BotList", client.user.avatarURL())
     .setThumbnail(client.user.avatarURL())
     .setDescription(`Tebrikler, **${d.reason}** sebebiyle kapanmış olan Prime BotList'u tekrar açtınız.`)
     .setColor("GREEN")
     .setTitle("BAŞARILI")
     message.channel.send(tebriklerkanks);
-    client.channels.cache.get(ch.webstatus).messages.fetch(d.bakimmsg).then(a => { a.edit(`~~ Prime BotList **${d.reason}** sebebi ile __bakım__ moduna alındı. ~~`, bakimbitti) } )
+    client.channels.cache.get(ch.webstatus).messages.fetch(d.bakimmsg).then(a => { a.edit(`~~ Ringo BotList,  **${d.reason}** sebebi ile __bakım__ moduna alındı.~~ ||@everyone||`, bakimbitti) } )
     const bakimbitti = new Discord.MessageEmbed()
-    .setAuthor("Prime BotList", client.user.avatarURL())
+    .setAuthor("Ringo BotList", client.user.avatarURL())
     .setThumbnail(client.user.avatarURL())
     .setColor("GREEN")
-    .setDescription(`Ringo BotList are **active** again!\n[Click to redirect website](https://botlistsdd.glitch.me)`)
-    .setFooter("Prime BotList © 2021");
+    .setDescription(`Ringo BotList, Tekrar **Aktif**!\n[Click to redirect website](https://botlistsdd.glitch.me)`)
+    .setFooter("Ringo BotList © 2021");
     client.channels.cache.get(ch.webstatus).send(".").then(b => { b.delete({ timeout: 500 })})
     databakim.deleteOne({server: message.guild.id}, function (error, server) { 
     if(error) console.log(error)

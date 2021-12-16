@@ -7,7 +7,7 @@
       <i></i>
   </div>
   <form method="post">
-      <h3 style="color: #fff">Editing "<%= botdata.username %>"</h3>
+      <h3 style="color: #fff">"<%= botdata.username %>" Editleniyor...</h3>
      <div class="row">
           <div class="col-md-6">
               <div class="form-group">
@@ -103,7 +103,7 @@
      title: 'Successful...',
      closeOnConfirm: false,
      text: urlParams.get('message'),
-     footer: 'Copyright 2021 &copy Prime BotList - All right reserved.'
+     footer: 'Copyright 2022 &copy Ringo BotList - All right reserved.'
     }).then((result) => {
   if (result.isConfirmed) {
     window.location.href = `/bot/${urlParams.get('botID')}`;
@@ -115,7 +115,7 @@
      icon: 'error',
      title: 'Oops...',
      text: urlParams.get('message'),
-     footer: 'Copyright 2021 &copy Prime BotList - All right reserved.'
+     footer: 'Copyright 2022 &copy Ringo BotList - All right reserved.'
     }).then((result) => {
   if (result.isConfirmed) {
     window.location.href = '/addbot';

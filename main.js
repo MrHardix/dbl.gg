@@ -171,7 +171,7 @@ let x = await botlar.find()
 await x.forEach(async a => {
 await botlar.findOneAndUpdate({botID: a.botID},{$set: {votes: 0}})
 })
-client.channels.cache.get(channels.votes).send("All votes for this month have been deleted.")
+client.channels.cache.get(channels.votes).send("Bu alın tüm oyları resetlendi.")
 }, null, true, 'Europe/Istanbul');
 resetStats.start();
 })

@@ -72,7 +72,7 @@ if(args[1] == "kapat") {
     .setColor("GREEN")
     .setTitle("BAŞARILI")
     message.channel.send(tebriklerkanks);
-    client.channels.cache.get(ch.webstatus).messages.fetch(d.bakimmsg).then(a => { a.edit(`~~ Ringo BotList,  **${d.reason}** sebebi ile __bakım__ moduna alındı.~~ ||@everyone||`, bakimbitti) } )
+    client.channels.cache.get(ch.webstatus).messages.fetch(d.bakimmsg).then(a => { a.edit(`||@everyone|| ~~Ringo BotList, ${d.reason} sebebi ile __bakım__ moduna alındı.~~`, bakimbitti) } )
     const bakimbitti = new Discord.MessageEmbed()
     .setAuthor("Ringo BotList", client.user.avatarURL())
     .setThumbnail(client.user.avatarURL())

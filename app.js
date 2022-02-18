@@ -787,4 +787,4 @@ return client.users.fetch(id)
 } catch (error) {
 return undefined
 }
-} 
+}

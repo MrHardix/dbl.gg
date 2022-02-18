@@ -13,7 +13,7 @@ const generateEmbed = start => {
     .setColor("BLUE")
     .setFooter(c.footer)
   current.forEach(g => 
-    embed.addField(`${g.codeName}`, `[Click Here](https://botlistsdd.glitch.me/code/${g.code})`)
+    embed.addField(`${g.codeName}`, `[Click Here](https://bot-list-website.glitch.me/code/${g.code})`)
   ) 
   return embed
 }

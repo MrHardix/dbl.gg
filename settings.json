@@ -1,12 +1,12 @@
 {
-  "token": "OTM5NjEzNTExMTI0OTEwMDgw.Yf7ZRg.Qi-BBZikgaQ_9_htSYW6ZDZqClU",
+  "token": "",
   "prefix" : "!",
   "owner" : ["715564822858825750"],
   "clientid" : "939613511124910080",
   "clientsecret" : "z3x7XgaacN9Sm-tdjT5YhC89BdJiBx5c",
-  "clientcallback" : "https://candied-absorbing-dichondra.glitch.me/callback",
+  "clientcallback" : "https://bot-list-website.glitch.me/callback",
   "mongoURL" : "mongodb+srv://primeupbotlist:24272006.@primebotlist.lnntm.mongodb.net/primeupbotlist?retryWrites=true&w=majority",
   "serverID": "942803092854960129",
-  "footer": "Ringo Botlist+ © 2021",
+  "footer": "discord Botlist+ © 2021",
   "tags": ["Moderation", "Fun", "Minecraft","Economy","Guard","NSFW","Anime","Invite","Music","Logging", "Web Dashboard", "Reddit", "Youtube", "Twitch", "Crypto", "Leveling", "Game", "Roleplay", "Utility", "Turkish"]
 }

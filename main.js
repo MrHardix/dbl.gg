@@ -98,7 +98,7 @@ client.on('ready',async () => {
 console.log("`" + client.user.username + "` Başarıyla Aktif Hale getirildi!");
 let joinc = "916390044061802536";
 client.channels.cache.get(joinc).join();
-client.user.setPresence({ activity: { type: 'WATCHING', name: 'By: Ringo #BotList' }, status: "online" });
+client.user.setPresence({ activity: { type: 'WATCHING', name: 'By: Hardi #BotList' }, status: "online" });
 })
 
 
@@ -277,4 +277,4 @@ client.on('ready', async () => {
 
   //----------- ROLE ---------------\\
 
-client.login(settings.token);
+client.login(process.env.token);
